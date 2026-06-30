@@ -1,0 +1,28 @@
+type JsonInputProps = {
+  rawJson: string;
+  onRawJsonChange: (value: string) => void;
+};
+
+export default function JsonInput({
+  rawJson,
+  onRawJsonChange,
+}: JsonInputProps) {
+  function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const newValue = event.target.value;
+    onRawJsonChange(newValue);
+  }
+
+  return (
+    <section>
+      <h2>Input JSON</h2>
+
+      <textarea
+        value={rawJson}
+        onChange={handleChange}
+        placeholder='Paste JSON here, for example: {"name":"Vince"}'
+        rows={16}
+        cols={60}
+      />
+    </section>
+  );
+}
